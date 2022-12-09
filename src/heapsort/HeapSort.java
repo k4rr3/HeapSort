@@ -14,21 +14,21 @@ public class HeapSort {
     }
 
     public static <E extends Comparable<? super E>> void deleteRoot(E[] elements) {
-        BinaryHeap bh = new BinaryHeap<>(elements, Comparator.naturalOrder());
+        BinaryHeap<Integer> bh = new BinaryHeap<>((Integer[]) elements, Comparator.naturalOrder());
         bh.heapSize = bh.elements.length;
         bh.deleteRoot();
+    }
+
+    public static <E extends Comparable<? super E>> void addElement(Integer[] elements, Integer num) {
+        BinaryHeap<Integer> bh = new BinaryHeap<>(elements, Comparator.naturalOrder());
+        bh.heapSize = bh.elements.length - 1;
+        bh.addElement(num);
     }
 
     static class BinaryHeap<E> {
         final E[] elements;
         final Comparator<? super E> comparator;
         int heapSize;
-
-        public BinaryHeap(E[] elements, Comparator<E> cmp, int size) {
-            this.elements = elements;
-            this.comparator = cmp;
-            this.heapSize = size;
-        }
 
         public BinaryHeap(E[] elements, Comparator<E> cmp) {
             this.elements = elements;
@@ -121,8 +121,8 @@ public class HeapSort {
 
         public void heapSort() {
             heapSize = 0;
-            for (int heapSize = 0; heapSize < elements.length; heapSize++) {
-                addElement(elements[heapSize]);
+            for (E element : elements) {
+                addElement(element);
             }
             //heapSize = elements.length;
             build_max_heap();
