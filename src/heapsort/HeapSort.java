@@ -128,7 +128,7 @@ public class HeapSort {
         }
 
         public void heapSort() {
-            heapSize = 0;
+
             for (E element : elements) {
                 addElement(element);
             }
