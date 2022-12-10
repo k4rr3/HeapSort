@@ -96,11 +96,11 @@ public class HeapSort {
             int right = right(index);
             int largest = index;
 
-            if (left < heapSize && (comparator.compare(elements[index], elements[left]) < 0)) {
+            if (hasLeft(index) && (comparator.compare(elements[index], elements[left]) < 0)) {
                 largest = left;
             }
 
-            if (right < heapSize && (comparator.compare(elements[largest], elements[right]) < 0)) {
+            if (hasRight(index) && (comparator.compare(elements[largest], elements[right]) < 0)) {
                 largest = right;
             }
 
