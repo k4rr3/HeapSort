@@ -63,12 +63,19 @@ public class HeapSort {
 
         public boolean addElement(E element) {
             elements[heapSize] = element;
-            if (hasParent(heapSize)) {
-                int parent_idx = parent(heapSize);
-                max_heapify(parent_idx);
-            }
+            upHeapify(heapSize);
             heapSize++;
             return true;
+        }
+
+        public void upHeapify(int index) {
+
+            if (hasParent(index)) {
+                if (comparator.compare(elements[index], elements[parent(index)]) > 0) {
+                    swapByIndex(index, parent(index));
+                    upHeapify(parent(index));
+                }
+            }
         }
 
         public E deleteRoot() {
@@ -79,7 +86,7 @@ public class HeapSort {
             //swap(element, elements[heapSize - 1]);
             swapByIndex(0, heapSize - 1);
             heapSize--;
-            max_heapify(0);
+            downHeapify(0);
             return element;
         }
 
@@ -88,12 +95,12 @@ public class HeapSort {
             for (int i = 0; i < elements.length; i++) {
                 //checking if an element isn't a leaf
                 if (!(i >= (heapSize / 2) && i <= heapSize))
-                    max_heapify(i);
+                    downHeapify(i);
                 else break;
             }
         }
 
-        private void max_heapify(int index) {
+        private void downHeapify(int index) {
             int left = left(index);
             int right = right(index);
             int largest = index;
@@ -108,11 +115,12 @@ public class HeapSort {
 
             if (largest != index) {
                 swapByIndex(largest, index);
-                if (comparator.compare(elements[parent(index)], elements[index]) < 0) {
+                /*if (comparator.compare(elements[parent(index)], elements[index]) < 0) {
                     max_heapify(parent(index));
                 } else {
                     max_heapify(largest);
-                }
+                }*/
+                downHeapify(largest);
             }
             //Quan ni l'esquerra ni el dret siguin majors al index la funció acabara
         }

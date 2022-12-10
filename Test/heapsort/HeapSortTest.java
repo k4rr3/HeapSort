@@ -47,7 +47,7 @@ class HeapSortTest {
         Integer[] array = new Integer[]{1, 1, 1, 1, null};
         Integer num = 99;
         HeapSort.addElement(array, num);
-        Assertions.assertArrayEquals(new Integer[]{1, 1, 1, 1, 99}, array);
+        Assertions.assertArrayEquals(new Integer[]{99, 1, 1, 1, 1}, array);
     }
 
     @Test
