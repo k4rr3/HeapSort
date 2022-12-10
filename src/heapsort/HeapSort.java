@@ -62,9 +62,10 @@ public class HeapSort {
         }
 
         public boolean addElement(E element) {
-            elements[heapSize] = element;
-            upHeapify(heapSize);
+            int lastPosition = heapSize;
             heapSize++;
+            elements[lastPosition] = element;
+            upHeapify(lastPosition);
             return true;
         }
 
@@ -82,10 +83,11 @@ public class HeapSort {
             if (elements.length == 0) {
                 return null;
             }
-            E element = elements[0];
-            swapByIndex(0, heapSize - 1);
             heapSize--;
+            E element = elements[0];
+            swapByIndex(0, heapSize);
             downHeapify(0);
+
             return element;
         }
 
@@ -120,7 +122,6 @@ public class HeapSort {
             for (E element : elements) {
                 addElement(element);
             }
-
             //heapSize is updated inside deleteRoot function
             while (heapSize > 0) {
                 deleteRoot();
