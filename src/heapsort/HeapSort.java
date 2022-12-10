@@ -37,8 +37,18 @@ public class HeapSort {
         }
 
         static int parent(int index) {
+            /*
             int result = (index - 1) / 2;
             return (int) Math.floor(result);
+            */
+            int parentIdx = (index - 1) / 2;
+            parentIdx = (int)Math.floor(parentIdx);
+
+            if(parentIdx < 0){
+                throw new IndexOutOfBoundsException("Invalid parent index. This function must not be called using a root index");
+            }
+
+            return parentIdx;
         }
 
         static int left(int index) {
