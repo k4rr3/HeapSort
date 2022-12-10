@@ -83,21 +83,10 @@ public class HeapSort {
                 return null;
             }
             E element = elements[0];
-            //swap(element, elements[heapSize - 1]);
             swapByIndex(0, heapSize - 1);
             heapSize--;
             downHeapify(0);
             return element;
-        }
-
-        private void build_max_heap() {
-
-            for (int i = 0; i < elements.length; i++) {
-                //checking if an element isn't a leaf
-                if (!(i >= (heapSize / 2) && i <= heapSize))
-                    downHeapify(i);
-                else break;
-            }
         }
 
         private void downHeapify(int index) {
@@ -115,14 +104,9 @@ public class HeapSort {
 
             if (largest != index) {
                 swapByIndex(largest, index);
-                /*if (comparator.compare(elements[parent(index)], elements[index]) < 0) {
-                    max_heapify(parent(index));
-                } else {
-                    max_heapify(largest);
-                }*/
                 downHeapify(largest);
             }
-            //Quan ni l'esquerra ni el dret siguin majors al index la funció acabara
+            //Function ends when none of the child is greater than it's parent
         }
 
         void swapByIndex(int idx1, int idx2) {
@@ -136,9 +120,9 @@ public class HeapSort {
             for (E element : elements) {
                 addElement(element);
             }
-            //heapSize = elements.length;
-            build_max_heap();
-            for (int i = 0; heapSize > 0 && i < elements.length; i++) {
+
+            //heapSize is updated inside deleteRoot function
+            while (heapSize > 0) {
                 deleteRoot();
             }
         }
