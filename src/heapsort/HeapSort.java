@@ -108,7 +108,7 @@ public class HeapSort {
                 swapByIndex(largest, index);
                 downHeapify(largest);
             }
-            //Function ends when none of the child is greater than it's parent
+            //Function ends when none of the children are greater than their parent
         }
 
         void swapByIndex(int idx1, int idx2) {
