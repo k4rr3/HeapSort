@@ -89,13 +89,13 @@ public class HeapSort {
                 //checking if an element isn't a leaf
                 if (!(i >= (heapSize / 2) && i <= heapSize))
                     max_heapify(i);
+                else break;
             }
         }
 
         private void max_heapify(int index) {
             int left = left(index);
             int right = right(index);
-
             int largest = index;
 
             if (left < heapSize && (comparator.compare(elements[index], elements[left]) < 0)) {
@@ -108,7 +108,11 @@ public class HeapSort {
 
             if (largest != index) {
                 swapByIndex(largest, index);
-                max_heapify(largest);
+                if (comparator.compare(elements[parent(index)], elements[index]) < 0) {
+                    max_heapify(parent(index));
+                } else {
+                    max_heapify(largest);
+                }
             }
             //Quan ni l'esquerra ni el dret siguin majors al index la funció acabara
         }

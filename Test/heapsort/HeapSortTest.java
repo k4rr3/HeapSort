@@ -23,9 +23,9 @@ class HeapSortTest {
 
     @Test
     void sort11() {
-        Integer[] array = new Integer[]{8, 8, 5, 3, 1, 9};
+        Integer[] array = new Integer[]{8, 5, 3, 1, 9};
         HeapSort.sort(array);
-        Assertions.assertArrayEquals(new Integer[]{1, 3, 5, 8, 8, 9}, array);
+        Assertions.assertArrayEquals(new Integer[]{1, 3, 5, 8, 9}, array);
     }
 
     @Test
