@@ -22,14 +22,14 @@ class HeapSortTest {
     }
 
     @Test
-    void sort11() {
+    void sort2() {
         Integer[] array = new Integer[]{8, 5, 3, 1, 9};
         HeapSort.sort(array);
         Assertions.assertArrayEquals(new Integer[]{1, 3, 5, 8, 9}, array);
     }
 
     @Test
-    void sort2() {
+    void sort3() {
         Integer[] array = new Integer[]{9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
         HeapSort.sort(array);
         Assertions.assertArrayEquals(new Integer[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, array);
