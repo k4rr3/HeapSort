@@ -37,10 +37,7 @@ public class HeapSort {
         }
 
         static int parent(int index) {
-            /*
-            int result = (index - 1) / 2;
-            return (int) Math.floor(result);
-            */
+
             int parentIdx = (index - 1) / 2;
             parentIdx = (int)Math.floor(parentIdx);
 
